@@ -1,14 +1,14 @@
 library(sits)
 
 #
-# Read BDC tile
+# Reading BDC tile
 #
 bdc_grid <- sf::st_read("./data/raw/bdc/BDC_TILE_LG_V2_003003.gpkg")
 
 #
-# Create CBERS cube
+# Creating CBERS cube
 #
-bdc_cube <- sits::sits_cube(
+cbers_cube <- sits::sits_cube(
   source = "BDC",
   collection = "CBERS-WFI-8D",
   start_date = "2023-01-01",
@@ -18,16 +18,16 @@ bdc_cube <- sits::sits_cube(
 )
 
 #
-# Download CBERS cube images
+# Downloading CBERS cube images
 #
-bdc_cube <- sits::sits_cube_copy(
-  bdc_cube, 
+cbers_cube <- sits::sits_cube_copy(
+  cbers_cube, 
   multicores = 12,
   output_dir = "./data/raw/bdc/cbers-4a/"
 )
 
 #
-# Create Sentinel-1 cube
+# Creating Sentinel-1 cube
 #
 s1_cube <- sits::sits_cube(
   source = "MPC",

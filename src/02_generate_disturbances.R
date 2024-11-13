@@ -11,16 +11,16 @@ roi <- c(
 )
 
 #
-# Create a local CBERS cube
+# Creating a local CBERS cube
 #
-bdc_cube <- sits::sits_cube(
+cbers_cube <- sits::sits_cube(
   source = "BDC",
   collection = "CBERS-WFI-8D",
   data_dir = "./data/raw/bdc/cbers-4"
 )
 
 #
-# Create a local Sentinel-1 cube
+# Creating a local Sentinel-1 cube
 #
 s1_cube <- sits::sits_cube(
   source = "MPC",
@@ -29,12 +29,12 @@ s1_cube <- sits::sits_cube(
 )
 
 #
-# Merge CBERS and Sentinel-1 cubes
+# Merging CBERS and Sentinel-1 cubes
 #
-merged_cubes <- sits::sits_merge(bdc_cube, s1_cube)
+merged_cubes <- sits::sits_merge(cbers_cube, s1_cube)
 
 #
-# Define mean and sd values for bayts method
+# Defining mean and sd values for bayts method
 #
 em <- tibble::tribble(
   ~stats, ~label, ~VH, ~EVI,
@@ -45,7 +45,7 @@ em <- tibble::tribble(
 )
 
 #
-# Create a bayts model
+# Creating a bayts model
 #
 radd <- sits::sits_detect_change_method(
   samples = NULL, sits::sits_radd(
@@ -57,7 +57,7 @@ radd <- sits::sits_detect_change_method(
 )
 
 #
-# Detect changes in the roi area using combined cubes
+# Detecting changes in the roi area using combined cubes
 #
 res <- sits::sits_detect_change(
   data = sits::sits_select(merged_cubes, bands = c("VH", "EVI", "CLOUD")),
