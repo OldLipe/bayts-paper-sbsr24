@@ -1,6 +1,7 @@
 # Multi-sources Integration Compedium
 
 <!-- badges: start -->
+[![renv project](https://img.shields.io/badge/renv%20project-OK-brightgreen.svg)](https://rstudio.github.io/renv/)
 
 <!-- badges: end -->
 
@@ -10,9 +11,9 @@ This repository contains the code, data and results of the paper **Integration o
 
 This repository is organized as follows:
 
--   `src`: contains the paper code
--   `data/raw`: contains the experiment's input data
--   `data/output`: contains the experiment outputs
+- `src`: contains the paper code
+- `data/raw`: contains the experiment's input data
+- `data/output`: contains the experiment outputs
 
 ## Contact me
 
